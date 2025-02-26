@@ -5,7 +5,7 @@ from langchain_ollama import OllamaLLM
 from langchain.agents import initialize_agent, AgentType
 from langchain.tools import Tool
 
-# تحميل المتغيرات البيئية
+# Load environment variables
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
@@ -14,7 +14,7 @@ def get_weather(city: str) -> str:
     if not API_KEY:
         return "API_KEY is missing. Please check your .env file."
 
-    # تنظيف اسم المدينة لإزالة أي علامات اقتباس أو مسافات غير ضرورية
+    # Clean city name to remove any unnecessary quotes or spaces
     city = city.strip().replace("'", "").replace('"', "")
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric"
 
@@ -34,7 +34,7 @@ def get_weather(city: str) -> str:
     except requests.exceptions.RequestException as err:
         return f"An error occurred: {err}"
 
-# تعريف الأداة
+# Define the tool
 weather_tool = Tool(
     name="Use the Weather API",
     func=get_weather,
@@ -42,10 +42,10 @@ weather_tool = Tool(
     return_direct=True
 )
 
-# تهيئة النموذج LLM
+# Initialize the LLM model
 llm = OllamaLLM(model="llama3.2")
 
-# إنشاء الوكيل الذكي
+# Create the intelligent agent
 agent = initialize_agent(
     tools=[weather_tool],
     llm=llm,
@@ -55,7 +55,7 @@ agent = initialize_agent(
     handle_parsing_errors=True
 )
 
-# تجربة الاستخدام
+# Interactive session for weather queries
 print("Available tools:", [tool.name for tool in agent.tools])
 
 while True:
