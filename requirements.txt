@@ -1,1 +1,4 @@
 pytest
+
+langchain-ollama
+langchain-community
