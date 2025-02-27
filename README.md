@@ -1,122 +1,108 @@
-# tameronline-agent
+# tameronline-witter
 
 ## Overview
-`tameronline-agent` is a lightweight and automated environment setup script designed to streamline the process of creating and activating a virtual environment across different operating systems (Windows, Linux, and macOS). This project ensures that Python dependencies are properly managed and integrated with your development workflow.
+`tameronline-witter` is a structured and automated project setup designed to facilitate the management of Python-based development environments across multiple operating systems (Windows, Linux, and macOS). The project integrates virtual environment activation, dependency management, and testing automation.
 
 ## Features
-- **Cross-Platform Support**: Works seamlessly on Windows (`.bat`, `.ps1`), Linux (`.sh`), and macOS (`.sh`).
-- **Automated Virtual Environment Setup**: Detects Python installation, creates a virtual environment, and activates it.
-- **Pip Package Management**: Ensures the latest version of pip and installs dependencies from `requirements.txt`.
-- **Integrated with VS Code**: Provides a `.code-workspace` file for one-click environment activation in Visual Studio Code.
+- **Cross-Platform Compatibility**: Includes scripts for Windows (`.bat`, `.ps1`), Linux, and macOS (`.sh`).
+- **Automated Environment Setup**: Detects Python installation, creates a virtual environment, and activates it.
+- **Dependency Management**: Installs necessary Python packages from `requirements.txt`.
+- **Testing Integration**: Contains test scripts to validate core functionalities.
+- **GitHub Actions CI/CD**: Automated tests executed on push and pull requests.
 
 ## Installation
+
 ### Prerequisites
-- **Python 3.6+** must be installed.
-- **VS Code (optional)** for an integrated development experience.
+- **Python 3.6+**
+- **Git** (for cloning the repository)
+- **VS Code** (optional for enhanced development experience)
 
 ### Setup Instructions
-#### Windows
-**Using Command Prompt:**
-```cmd
-cd path/to/tameronline-agent
-activate_project.bat
-```
-**Using PowerShell:**
-```powershell
-cd path/to/tameronline-agent
-.\activate_project.ps1
-```
 
-#### Linux/macOS
+#### **Cloning the Repository**
 ```bash
-cd path/to/tameronline-agent
-chmod +x activate_project.sh
-./activate_project.sh
+# Using HTTPS
+git clone https://github.com/TamerOnLine/tameronline-witter.git
+
+# Using SSH
+git clone git@github.com:TamerOnLine/tameronline-witter.git
 ```
 
-## Cloning the Project
-To clone the `tameronline-agent` repository to your local machine, follow these steps:
-
-### **1. Ensure Git is Installed**
-Check if Git is installed by running:
+#### **Navigating to the Project Directory**
 ```bash
-git --version
-```
-If not installed, download and install it from [Git Official Website](https://git-scm.com/).
-
-### **2. Clone the Repository**
-Open a terminal or command prompt and execute:
-```bash
-git clone https://github.com/TamerOnLine/tameronline-agent.git
-```
-For SSH access:
-```bash
-git clone git@github.com:TamerOnLine/tameronline-agent.git
+cd tameronline-witter
 ```
 
-### **3. Navigate into the Project Directory**
-```bash
-cd tameronline-agent
-```
-
-### **4. Setup the Virtual Environment**
-#### **Windows (Command Prompt)**
+#### **Setting Up the Virtual Environment**
+##### **Windows (Command Prompt)**
 ```cmd
 activate_project.bat
 ```
-#### **Windows (PowerShell)**
+##### **Windows (PowerShell)**
 ```powershell
 .\activate_project.ps1
 ```
-#### **Linux/macOS**
+##### **Linux/macOS**
 ```bash
 chmod +x activate_project.sh
 ./activate_project.sh
 ```
 
-### **5. Install Dependencies**
-After activating the virtual environment, install the required dependencies:
+#### **Installing Dependencies**
 ```bash
 pip install -r requirements.txt
 ```
 
 ## File Structure
 ```
-tameronline-agent/
+tameronline-witter/
 ├── README.md                # Documentation
+├── LICENSE                  # License file
 ├── activate_project.bat     # Windows CMD script
 ├── activate_project.ps1     # Windows PowerShell script
 ├── activate_project.sh      # Linux/macOS Bash script
-├── requirements.txt         # List of dependencies
-└── workspace.code-workspace # VS Code workspace file
+├── requirements.txt         # Python dependencies
+├── workspace.code-workspace # VS Code workspace configuration
+├── src/                     # Source code
+│   ├── __init__.py
+│   ├── main.py              # Main application logic
+│   ├── runner.py            # Script runner
+├── tests/                   # Test scripts
+│   ├── __init__.py
+│   ├── test.py
+│   ├── test_key_witter.py   # API Key validation tests
+│   └── test_ollama.py       # LLM model test script
+└── .github/workflows/       # CI/CD automation
+    └── main.yml             # GitHub Actions workflow
 ```
 
 ## Usage
-### Activating the Virtual Environment
-After running the respective script for your OS, your terminal will enter the virtual environment. You can confirm this by checking your prompt:
+
+### **Running the Main Application**
+To start the application and interact with the weather agent:
 ```bash
-(venv) user@machine:~/tameronline-agent$
+python src/main.py
 ```
 
-### Installing Dependencies
-Once the virtual environment is active, install the required dependencies:
+### **Executing a Script via `runner.py`**
 ```bash
-pip install -r requirements.txt
+python src/runner.py
 ```
+This will prompt you to select a script from the `src/` directory to execute.
 
-### Deactivating the Virtual Environment
-To exit the virtual environment, simply run:
+### **Running Tests**
+To run all test cases:
 ```bash
-deactivate
+pytest tests/
 ```
 
 ## Troubleshooting
-- **Python Not Found Error**: Ensure Python 3.6+ is installed and available in the system path.
-- **Virtual Environment Activation Fails**: Delete the `venv` folder and rerun the activation script.
-- **Permission Issues on macOS/Linux**: Run `chmod +x activate_project.sh` to grant execution permissions.
+- **Python Not Found**: Ensure Python 3.6+ is installed and available in the system path.
+- **Virtual Environment Activation Issues**: Delete the `venv` directory and rerun the activation script.
+- **Permission Issues on macOS/Linux**: Run `chmod +x activate_project.sh` before executing the script.
 
 ## Contribution
-Feel free to submit pull requests or report issues on the [GitHub repository](https://github.com/TamerOnLine/tameronline-agent).
+Feel free to submit pull requests or report issues on the [GitHub repository](https://github.com/TamerOnLine/tameronline-witter).
 
 ## License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
