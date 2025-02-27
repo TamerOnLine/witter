@@ -22,7 +22,10 @@ jobs:
         run: pip cache purge
 
       - name: Remove all installed packages
-        run: python -m pip freeze | xargs pip uninstall -y
+        run: |
+          pip freeze > installed_packages.txt
+          if [ -s installed_packages.txt ]; then xargs pip uninstall -y < installed_packages.txt; fi
+
 
       - name: Install dependencies
         run: |
