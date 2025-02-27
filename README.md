@@ -54,6 +54,8 @@ pip install -r requirements.txt
 ```
 
 ## File Structure
+
+![Project Structure](img/screenshot.png)
 ```
 tameronline-witter/
 ├── README.md                # Documentation
@@ -71,10 +73,9 @@ tameronline-witter/
 │   ├── __init__.py
 │   ├── test.py
 │   ├── test_key_witter.py   # API Key validation tests
-│   └── test_ollama.py       # LLM model test script
+│   ├── test_ollama.py       # LLM model test script
 └── .github/workflows/       # CI/CD automation
     └── main.yml             # GitHub Actions workflow
-```
 
 ## Usage
 
@@ -106,4 +107,7 @@ Feel free to submit pull requests or report issues on the [GitHub repository](ht
 
 ## License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+## Additional Resources
+For more details, visit the official repository: [GitHub Repository](https://github.com/TamerOnLine/tameronline-witter).
 
